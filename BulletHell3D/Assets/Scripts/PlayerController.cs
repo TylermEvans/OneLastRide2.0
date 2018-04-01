@@ -24,14 +24,22 @@ public class PlayerController : MonoBehaviour {
         Vector3 newVel = new Vector3(horizontalMove, 0.0f, verticalMove); 
         playerRigidbody.velocity = newVel * speed * Time.fixedDeltaTime; // set new velocity to be the one from input * speed value scaled by deltatime
         Vector3 newDir = new Vector3(Input.GetAxis("Rhorizontal"), 0.0f, Input.GetAxis("Rvertical"));
-        playerRigidbody.rotation = Quaternion.LookRotation(newDir * Time.fixedDeltaTime);      // set players orientation == direction of second analog stick/axis
+        if (newDir != Vector3.zero)
+        {
+            playerRigidbody.rotation = Quaternion.LookRotation(newDir * Time.fixedDeltaTime);      // set players orientation == direction of second analog stick/axis
+
+        }
         float attack = Input.GetAxis("PrimaryAttack");
         Vector3 newpos = transform.position + transform.forward * 1;
         bulletCooldown -= Time.fixedDeltaTime; // bullet countdown
         if ((attack != 0 || Input.GetKeyDown("space")) && bulletCooldown <= 0) // attack with space bar or right trigger on gamepad
         {
-            Instantiate(bullet, newpos, Quaternion.LookRotation(transform.forward)); // create bullet
-            bulletCooldown = oldTime; // reset bullet cooldown
+            if (transform.forward != Vector3.zero)
+            {
+                Instantiate(bullet, newpos, Quaternion.LookRotation(transform.forward)); // create bullet
+                bulletCooldown = oldTime; // reset bullet cooldown
+            }
+            
         }
     }
 
