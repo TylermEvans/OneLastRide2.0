@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour {
     public float speed;
     public int bulletLife;
     public int damage;
+    //public Pattern bullet_pattern ?
+
 	// Use this for initialization
 	void Start () {
 		

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PowerUpTest : MonoBehaviour {
 
+    // member variables
+    //double timer;
+    //string name; // ie "shotgun"
+    //Pattern shot_pattern ??
+    public int damage;
+    public float speed;
+
 	// Use this for initialization
 	void Start () {
 		

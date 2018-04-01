@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject bullet; // the bullet object the player is currently using
     public float bulletCooldown; // the bullet fire rate
     private float oldTime; // the max bullet fire rate
-
+    
 
 
     private void Start()
@@ -41,6 +41,20 @@ public class PlayerController : MonoBehaviour {
             }
             
         }
+    }
+
+    public void powerUpPickUp(PowerUpTest p) {
+        // should be called on collision with a power up
+        // changes bullet associated with player
+
+        /*
+        this.bullet.speed = p.speed;
+        this.bullet.damage = p.damage;
+        // modify bullet pattern here
+        */
+
+        // if the pickup is able to timeout, then we should reset bullet somehow
+        // but im not concerned with that rn
     }
 
 }
