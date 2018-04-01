@@ -512,6 +512,11 @@ Prefab:
       propertyPath: Health
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114413421533997708, guid: 77ddbb5ad0806824d99834581003ca38,
+        type: 2}
+      propertyPath: bulletCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77ddbb5ad0806824d99834581003ca38, type: 2}
   m_IsPrefabParent: 0
