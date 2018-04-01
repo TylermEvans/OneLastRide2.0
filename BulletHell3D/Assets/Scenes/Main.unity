@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 200322311}
   - component: {fileID: 200322310}
   - component: {fileID: 200322309}
+  - component: {fileID: 200322313}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -197,6 +198,21 @@ Transform:
   m_Father: {fileID: 1979508354}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &200322313
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 200322308}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &410024048
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +533,26 @@ Prefab:
       propertyPath: bulletCooldown
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 23818097828080572, guid: 77ddbb5ad0806824d99834581003ca38,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54326198250341854, guid: 77ddbb5ad0806824d99834581003ca38,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54326198250341854, guid: 77ddbb5ad0806824d99834581003ca38,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54326198250341854, guid: 77ddbb5ad0806824d99834581003ca38,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 36
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77ddbb5ad0806824d99834581003ca38, type: 2}
   m_IsPrefabParent: 0
@@ -609,6 +645,20 @@ GameObject:
   m_PrefabParentObject: {fileID: 1351174691345034, guid: 77ddbb5ad0806824d99834581003ca38,
     type: 2}
   m_PrefabInternal: {fileID: 606235240}
+--- !u!64 &1845731335
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1845731329}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: b8855f2a06abd134e97f371215423c2d, type: 3}
 --- !u!1 &1979508353
 GameObject:
   m_ObjectHideFlags: 0

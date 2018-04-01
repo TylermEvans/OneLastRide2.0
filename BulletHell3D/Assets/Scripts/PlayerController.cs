@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    public float speed;
-    public int Health;
-    public GameObject bullet;
-    public float bulletCooldown;
-    private float oldTime;
+    public float speed; // speed of the player
+    public int Health; // the players health
+    public GameObject bullet; // the bullet object the player is currently using
+    public float bulletCooldown; // the bullet fire rate
+    private float oldTime; // the max bullet fire rate
 
 
 
     private void Start()
     {
-        oldTime = bulletCooldown;
+        oldTime = bulletCooldown; // save off the maxval for later
     }
     private void FixedUpdate()
     {
@@ -26,12 +26,12 @@ public class PlayerController : MonoBehaviour {
         Vector3 newDir = new Vector3(Input.GetAxis("Rhorizontal"), 0.0f, Input.GetAxis("Rvertical"));
         playerRigidbody.rotation = Quaternion.LookRotation(newDir * Time.fixedDeltaTime);      // set players orientation == direction of second analog stick/axis
         float attack = Input.GetAxis("PrimaryAttack");
-        Vector3 newpos = transform.position + transform.forward * 2;
-        bulletCooldown -= Time.fixedDeltaTime;
-        if (attack != 0 && bulletCooldown <= 0)
+        Vector3 newpos = transform.position + transform.forward * 1;
+        bulletCooldown -= Time.fixedDeltaTime; // bullet countdown
+        if ((attack != 0 || Input.GetKeyDown("space")) && bulletCooldown <= 0) // attack with space bar or right trigger on gamepad
         {
-            Instantiate(bullet, newpos, Quaternion.LookRotation(transform.forward));
-            bulletCooldown = oldTime;
+            Instantiate(bullet, newpos, Quaternion.LookRotation(transform.forward)); // create bullet
+            bulletCooldown = oldTime; // reset bullet cooldown
         }
     }
 

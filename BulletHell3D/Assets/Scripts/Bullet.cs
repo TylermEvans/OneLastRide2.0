@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
     public float speed;
     public int bulletLife;
+    public int damage;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,5 +20,9 @@ public class Bullet : MonoBehaviour {
         }
         bulletLife--;
        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
     }
 }
