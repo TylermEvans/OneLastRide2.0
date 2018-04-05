@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     public float speed; // speed of the player
     public int Health; // the players health
-    public GameObject bullet; // the bullet object the player is currently using
+    public Bullet[] bullets;
     public float bulletCooldown; // the bullet fire rate
     private float oldTime; // the max bullet fire rate
-    public GameObject weapon;
+    public WeaponBaseClass weapon;
 
 
     private void Start()
@@ -36,23 +35,22 @@ public class PlayerController : MonoBehaviour {
         {
             if (transform.forward != Vector3.zero)
             {
-                Instantiate(bullet, newpos, Quaternion.LookRotation(transform.forward)); // create bullet
+                //Instantiate(bullet, newpos, Quaternion.LookRotation(transform.forward)); // create bullet
                 bulletCooldown = oldTime; // reset bullet cooldown
             }
             
         }
+
+        for(int b = 0; b < bullets.Length; b++) {
+            bullets[b].update(this);
+        }
     }
 
-    public void powerUpPickUp(WeaponInterface wi) {
+    public void powerUpPickUp(WeaponBaseClass wi) {
         // should be called on collision with a power up
         // changes weapon associated with player
 
-        /*
-        this.weapon.speed = p.speed;
-        this.weapon.damage = p.damage;
-        // modify bullet pattern
         // ...
-        */
 
         // if the pickup is able to timeout, then we should reset bullet somehow
         // but im not concerned with that rn
