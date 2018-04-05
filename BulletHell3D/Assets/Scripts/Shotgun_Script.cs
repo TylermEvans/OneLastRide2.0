@@ -4,11 +4,11 @@ using UnityEngine;
 public class Shotgun_Script : MonoBehaviour, WeaponInterface {
 
     // member variables
-    int damage = 1;
-    int speed = 2;
+    int damage = 4;
+    int speed = 3;
     //Pattern shot_pattern
     //double timer;
-    string wname = "shotgun";
+    string weapon_name = "shotgun";
     // public png whatever idk fuck this class
 
     // Use this for initialization
@@ -28,6 +28,10 @@ public class Shotgun_Script : MonoBehaviour, WeaponInterface {
     public void print_stats() {
         Console.WriteLine("damage: {0}\n speed: {1}", damage, speed);
         // wow this is easily the ugliest print function i've ever seen
+    }
+
+    void onPickUp() {
+        //
     }
 
 }

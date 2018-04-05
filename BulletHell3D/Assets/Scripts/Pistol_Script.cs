@@ -8,7 +8,7 @@ public class Pistol_Script : MonoBehaviour, WeaponInterface {
     int speed = 2;
     //Pattern shot_pattern
     //double timer;
-    string wname = "pistol";
+    string weapon_name = "pistol";
 
     // Use this for initialization
     void Start()

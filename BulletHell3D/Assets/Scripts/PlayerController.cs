@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void powerUpPickUp(PowerUpTest p) {
+    public void powerUpPickUp(WeaponInterface wi) {
         // should be called on collision with a power up
         // changes bullet associated with player
 
