@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class buttonScript : MonoBehaviour
+public class playButtonaScript : MonoBehaviour
 {
 
 	// Use this for initialization
@@ -17,8 +17,8 @@ public class buttonScript : MonoBehaviour
 		
 	}
 
-     public void Exitgame ()
+    public void MoveToGame ()
     {
-        Application.Quit();
+        Debug.Log("You have clicked the button!");
     }
 }

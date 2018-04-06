@@ -418,6 +418,7 @@ GameObject:
   - component: {fileID: 540295699}
   - component: {fileID: 540295698}
   - component: {fileID: 540295697}
+  - component: {fileID: 540295700}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -483,8 +484,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 102900000, guid: 0de99d7b73e194b47bd1b61f4b21cf01, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 540295700}
+        m_MethodName: MoveToGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -529,6 +530,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 540295695}
+--- !u!114 &540295700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 540295695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfd33e7b32480c46a17b80b0b22a871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &802065318
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,8 +686,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 102900000, guid: 030154951e732f448b60f1a2bfdd43ce, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 820278223}
+        m_MethodName: Exitgame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
