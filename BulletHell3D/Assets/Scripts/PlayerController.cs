@@ -48,10 +48,13 @@ public class PlayerController : MonoBehaviour {
 
     public void powerUpPickUp(WeaponBaseClass wi) {
         // should be called on collision with a power up
-        // changes weapon associated with player
+        // changes bullet associated with player
 
-        // ...
-
+        /*
+        this.bullet.speed = p.speed;
+        this.bullet.damage = p.damage;
+        // modify bullet pattern here
+        */
         // if the pickup is able to timeout, then we should reset bullet somehow
         // but im not concerned with that rn
     }
