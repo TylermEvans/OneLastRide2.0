@@ -4,21 +4,32 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
     public int bulletLife;
+    public float bspeed;
     //public Pattern bullet_pattern ?
 
 	void Start () {}
 
-    public void update(PlayerController p) {
-        transform.position += transform.forward * p.weapon.speed * Time.fixedDeltaTime;
+    private void Update()
+    {
+        transform.position += transform.forward * bspeed * Time.deltaTime;
         if (bulletLife <= 0)
         {
             Destroy(gameObject);
         }
         bulletLife--;
-       
+
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (other.gameObject.name == "Player")
+        {
+
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
+
 }

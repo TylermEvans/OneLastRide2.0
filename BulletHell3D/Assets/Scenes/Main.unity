@@ -521,7 +521,7 @@ Prefab:
         type: 2}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 1331805810888276, guid: 207cdb59d47a972459ef872de753bf2e,
+      objectReference: {fileID: 114468792159372246, guid: 207cdb59d47a972459ef872de753bf2e,
         type: 2}
     - target: {fileID: 114413421533997708, guid: 77ddbb5ad0806824d99834581003ca38,
         type: 2}

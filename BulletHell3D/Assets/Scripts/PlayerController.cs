@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     public float speed; // speed of the player
-    public int Health; // the players health
-    public Bullet[] bullets;
+    public int health; // the players health
+    //public Bullet[] bullets;
     public float bulletCooldown; // the bullet fire rate
     private float oldTime; // the max bullet fire rate
     public WeaponBaseClass weapon;
+    public Bullet bullet;
 
 
     private void Start()
@@ -35,15 +36,15 @@ public class PlayerController : MonoBehaviour {
         {
             if (transform.forward != Vector3.zero)
             {
-                //Instantiate(bullet, newpos, Quaternion.LookRotation(transform.forward)); // create bullet
+                Instantiate(bullet, newpos, Quaternion.LookRotation(transform.forward)); // create bullet
                 bulletCooldown = oldTime; // reset bullet cooldown
             }
             
         }
 
-        for(int b = 0; b < bullets.Length; b++) {
+        /*for(int b = 0; b < bullets.Length; b++) {
             bullets[b].update(this);
-        }
+        }*/
     }
 
     public void powerUpPickUp(WeaponBaseClass wi) {
