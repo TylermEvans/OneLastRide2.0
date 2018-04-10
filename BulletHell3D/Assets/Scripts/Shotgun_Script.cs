@@ -45,6 +45,8 @@ public class Shotgun_Script : WeaponBaseClass {
                 Destroy(other.gameObject.GetComponent<PlayerController>().weapon);
             }
             setOwner(other.gameObject);
+            transform.SetParent(other.gameObject.transform);
+            transform.position = transform.parent.transform.position;
             gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
     }

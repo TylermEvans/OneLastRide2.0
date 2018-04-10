@@ -123,8 +123,8 @@ public class EnemyShoot : MonoBehaviour
         }
         for(int i = 0; i < numPaths; i++)
         {
-            float bx = Mathf.Cos(angleOffset + i * pathAngleGap);
-            float bz = Mathf.Sin(angleOffset + i * pathAngleGap);
+            float bx = Mathf.Cos(angleOffset + i * pathAngleGap)+transform.position.x;
+            float bz = Mathf.Sin(angleOffset + i * pathAngleGap)+transform.position.z;
             Vector3 bpos = new Vector3(bx, ty, bz);
             Vector3 bdir = (bpos - transform.position).normalized;
            Instantiate(bullet, bpos, Quaternion.LookRotation(bdir));
