@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playButtonaScript : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class playButtonaScript : MonoBehaviour
 
     public void MoveToGame ()
     {
-        Debug.Log("You have clicked the button!");
+        SceneManager.LoadScene(1);
+        //Debug.Log("You have clicked the button!");
     }
 }
