@@ -18,7 +18,10 @@ public class PlayerController : MonoBehaviour {
     }
     private void FixedUpdate()
     {
-        
+        if(health <=0)
+        {
+            Destroy(gameObject);
+        }
         Rigidbody playerRigidbody = GetComponent<Rigidbody>(); // get rigibody physics comp
         float horizontalMove = Input.GetAxis("Horizontal"); // get player left jostick/directional key input
         float verticalMove = Input.GetAxis("Vertical"); 
@@ -53,6 +56,17 @@ public class PlayerController : MonoBehaviour {
             weapon = other.gameObject;
          
         }
+        if (other.gameObject.tag == "ebullet")
+        {
+            this.health -= 10;
+        }
     }
+   /* private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "ebullet")
+        {
+            this.health -= 10;
+        }
+    }*/
 
 }

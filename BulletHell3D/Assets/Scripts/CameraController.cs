@@ -12,10 +12,14 @@ public class CameraController : MonoBehaviour {
     }
     void Update ()
     {
-        Vector3 pos = rb.position;
-        pos.y += camHeight;
-        pos.z -= 10;
-        transform.position = pos;
+        if (player != null)
+        {
+            Vector3 pos = rb.position;
+            pos.y += camHeight;
+            pos.z -= 10;
+            transform.position = pos;
+        }
+        
 	      
 	}
 }

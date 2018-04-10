@@ -4,7 +4,7 @@ public class EnemyShoot : MonoBehaviour
 {
     // The type of bullet to fire
     [SerializeField]
-    private GameObject bullet;
+    private Bullet bullet;
 
     [SerializeField]
     private float weaponCoolDown;
@@ -107,6 +107,7 @@ public class EnemyShoot : MonoBehaviour
             float bx = xOffset + i * pathDistGap;
             Vector3 bpos = new Vector3(bx, ty, tz);
             Instantiate(bullet, bpos, Quaternion.LookRotation(transform.forward));
+            //b.mOwner = this.gameObject;
         }
     }
 
@@ -126,7 +127,19 @@ public class EnemyShoot : MonoBehaviour
             float bz = Mathf.Sin(angleOffset + i * pathAngleGap);
             Vector3 bpos = new Vector3(bx, ty, bz);
             Vector3 bdir = (bpos - transform.position).normalized;
-            Instantiate(bullet, bpos, Quaternion.LookRotation(bdir));
+           Instantiate(bullet, bpos, Quaternion.LookRotation(bdir));
+            
+
         }
+    }
+    public void PanicFire()
+    {
+        shootsRadial = true;
+        numPaths = 6;
+    }
+    public void EndPanicFire()
+    {
+        shootsRadial = false;
+        numPaths = 1;
     }
 }

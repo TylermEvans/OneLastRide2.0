@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+public class EBullet : MonoBehaviour
+{
     public int bulletLife;
     public float bspeed;
     public GameObject mOwner;
     //public Pattern bullet_pattern ?
 
-	void Start () {}
+    void Start() { }
 
     private void Update()
     {
@@ -33,12 +34,8 @@ public class Bullet : MonoBehaviour {
                 other.gameObject.GetComponent<Basic_enemy_AI>().health -= 10;
             }
         }*/
-        
-   
         Destroy(gameObject);
-        
-        
-        
+
     }
 
 }

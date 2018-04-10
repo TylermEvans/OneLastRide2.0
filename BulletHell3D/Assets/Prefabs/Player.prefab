@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 64252235443008466}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 800
-  health: 0
+  health: 80
   bulletCooldown: 0.2
   weapon: {fileID: 0}
   bullet: {fileID: 114468792159372246, guid: 207cdb59d47a972459ef872de753bf2e, type: 2}

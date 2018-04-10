@@ -41,9 +41,10 @@ GameObject:
   - component: {fileID: 135038062393168852}
   - component: {fileID: 23990361773621780}
   - component: {fileID: 114648249189912714}
+  - component: {fileID: 114921974172894408}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e91b7746c71d64246909d9346772d5d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1331805810888276, guid: 207cdb59d47a972459ef872de753bf2e, type: 2}
+  bullet: {fileID: 114174897708902232, guid: a59b97d42daae6641acff28fb11e5f03, type: 2}
   weaponCoolDown: 0
   numPaths: 0
   numBullets: 0
@@ -188,6 +189,23 @@ MonoBehaviour:
   pathDistGap: 0
   pathAngleGap: 0
   shootsRadial: 0
+--- !u!114 &114921974172894408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393468640234616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db56332a963e9e94bab652e718b62a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  move_speed: 5
+  rotate_speed: 5
+  d1: 10
+  d2: 7
+  health: 20
 --- !u!135 &135038062393168852
 SphereCollider:
   m_ObjectHideFlags: 1
