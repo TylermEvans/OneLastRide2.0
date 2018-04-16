@@ -2,35 +2,8 @@
 
 public class EnemyShoot : MonoBehaviour
 {
-    // The type of bullet to fire
     [SerializeField]
-    private Bullet bullet;
-
-    [SerializeField]
-    private float weaponCoolDown;
-
-    // How many trails of bullets per each firing
-    [SerializeField]
-    private int numPaths;
-
-    // How many times the weapon will fire
-    [SerializeField]
-    private int numBullets;
-    
-    // Amount of time between successive bullets
-    [SerializeField]
-    private float bulletDelay;
-
-    // Distance between bullet paths (for linear)
-    [SerializeField]
-    private float pathDistGap;
-
-    // Angle(degrees) between bullet paths (for radial)
-    [SerializeField]
-    private float pathAngleGap;
-    
-    [SerializeField]
-    private bool shootsRadial;
+    private PatternConfig[] patterns;
 
     // Transform coordinates
     private float tx;
@@ -46,21 +19,34 @@ public class EnemyShoot : MonoBehaviour
     private float weaponTimer;
     private float bulletTimer;
     private float numLeftToFire;
+    
+    /*
+     *  To set enemy firing pattern, create a new pattern from the prefab
+     *      and set its properties in the inspector. Then attach it to the PatternConfig array
+     *      also in the inspector. Lastly, call the SetPattern function and pass in the index of
+     *      the pattern you want to use.
+     */
+
+    private Bullet bullet;
+    private float weaponCoolDown;
+    private int numPaths;
+    private int numBullets;
+    private float bulletDelay;
+    private float pathDistGap;
+    private float pathAngleGap;
+    private bool shootsRadial;
+    private int currentPattern = 0;
 
     private void Start()
     {
-        // Assigning/clamping default values
-        weaponCoolDown = Mathf.Clamp(weaponCoolDown, 1, 10);
-        numPaths = Mathf.Clamp(numPaths, 1, 10);
-        numBullets = Mathf.Clamp(numBullets, 1, 10);
-        bulletDelay = Mathf.Clamp(bulletDelay, 0.1f, weaponCoolDown / numBullets);
-        pathDistGap = Mathf.Clamp(pathDistGap, 0.25f, 10);
-        pathAngleGap = Mathf.Clamp(pathAngleGap, 15, 360 / numPaths);
-
-        numPathsIsEven = numPaths % 2 == 0;
-
-        weaponTimer = weaponCoolDown;
-        numLeftToFire = numBullets;
+        if(patterns.Length > 0)
+        {
+            SetPattern(currentPattern);
+        }
+        else
+        {
+            Debug.Log(this.name + " has no fire pattern.");
+        }
     }
 
     private void FixedUpdate ()
@@ -123,15 +109,38 @@ public class EnemyShoot : MonoBehaviour
         }
         for(int i = 0; i < numPaths; i++)
         {
-            float bx = Mathf.Cos(angleOffset + i * pathAngleGap)+transform.position.x;
-            float bz = Mathf.Sin(angleOffset + i * pathAngleGap)+transform.position.z;
-            Vector3 bpos = new Vector3(bx, ty, bz);
-            Vector3 bdir = (bpos - transform.position).normalized;
+           float bx = Mathf.Cos(angleOffset + i * pathAngleGap)+transform.position.x;
+           float bz = Mathf.Sin(angleOffset + i * pathAngleGap)+transform.position.z;
+           Vector3 bpos = new Vector3(bx, ty, bz);
+           Vector3 bdir = (bpos - transform.position).normalized;
            Instantiate(bullet, bpos, Quaternion.LookRotation(bdir));
-            
-
         }
     }
+
+    private void SetPattern(int index)
+    {
+        if(index < patterns.Length)
+        {
+            // Assigning/clamping default values
+            weaponCoolDown = Mathf.Clamp(patterns[index].weaponCoolDown, 1, 10);
+            numPaths = Mathf.Clamp(patterns[index].numPaths, 1, 10);
+            numBullets = Mathf.Clamp(patterns[index].numBullets, 1, 10);
+            bulletDelay = Mathf.Clamp(patterns[index].bulletDelay, 0.1f, weaponCoolDown / numBullets);
+            pathDistGap = Mathf.Clamp(patterns[index].pathDistGap, 0.25f, 10);
+            pathAngleGap = Mathf.Clamp(patterns[index].pathAngleGap, 15, 360 / numPaths);
+            bullet = patterns[index].bullet;
+
+            numPathsIsEven = numPaths % 2 == 0;
+
+            weaponTimer = weaponCoolDown;
+            numLeftToFire = numBullets;
+        }
+        else
+        {
+            Debug.Log("Error: Attempting to set pattern to " + index + " for " + this.name + ".");
+        }
+    }
+
     public void PanicFire()
     {
         shootsRadial = true;
