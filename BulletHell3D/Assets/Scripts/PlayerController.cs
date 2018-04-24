@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour {
             weapon = other.gameObject;
          
         }
-        if (other.gameObject.tag == "ebullet")
+        if (other.gameObject.tag == "bullet" && other.gameObject.GetComponent<Bullet>().mOwner.tag == "Enemy")
         {
             this.health -= 10;
         }

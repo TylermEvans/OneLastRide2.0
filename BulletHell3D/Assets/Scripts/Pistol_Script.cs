@@ -31,7 +31,7 @@ public class Pistol_Script : WeaponBaseClass
             if (this.mOwner.transform.forward != Vector3.zero)
             {
                 Instantiate(bullet, newpos, Quaternion.LookRotation(this.mOwner.transform.forward)); // create bullet
-                //b.mOwner = this.mOwner;
+                bullet.mOwner = this.mOwner;
                 bulletCooldown = oldTime; // reset bullet cooldown
             }
 

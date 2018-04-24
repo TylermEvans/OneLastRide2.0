@@ -93,7 +93,7 @@ public class EnemyShoot : MonoBehaviour
             float bx = xOffset + i * pathDistGap;
             Vector3 bpos = new Vector3(bx, ty, tz);
             Instantiate(bullet, bpos, Quaternion.LookRotation(transform.forward));
-            //b.mOwner = this.gameObject;
+            bullet.mOwner = gameObject;
         }
     }
 
@@ -114,6 +114,7 @@ public class EnemyShoot : MonoBehaviour
            Vector3 bpos = new Vector3(bx, ty, bz);
            Vector3 bdir = (bpos - transform.position).normalized;
            Instantiate(bullet, bpos, Quaternion.LookRotation(bdir));
+           bullet.mOwner = gameObject;
         }
     }
 
@@ -129,6 +130,7 @@ public class EnemyShoot : MonoBehaviour
             pathDistGap = Mathf.Clamp(patterns[index].pathDistGap, 0.25f, 10);
             pathAngleGap = Mathf.Clamp(patterns[index].pathAngleGap, 15, 360 / numPaths);
             bullet = patterns[index].bullet;
+            bullet.mOwner = gameObject;
 
             numPathsIsEven = numPaths % 2 == 0;
 

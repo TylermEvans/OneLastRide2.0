@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Basic_enemy_AI : MonoBehaviour {
+public class Kamikaze_enemy_AI : MonoBehaviour {
     public Transform target;
     public float move_speed;
     public float rotate_speed;
-    public float d1;
-    public float d2;
     public int health;
     private Vector3 targetDir;
     private float distance;
@@ -15,13 +13,15 @@ public class Basic_enemy_AI : MonoBehaviour {
     private float rotate_step;
     private EnemyShoot es;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         target = GameObject.FindWithTag("Player").transform;
         es = GetComponent<EnemyShoot>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -32,18 +32,7 @@ public class Basic_enemy_AI : MonoBehaviour {
             distance = Vector3.Distance(target.position, transform.position);
             move_step = move_speed * Time.deltaTime;
             rotate_step = rotate_speed * Time.deltaTime;
-            if (distance > d1)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, move_step);
-            }
-            if (distance < d2)
-            {
-                es.PanicFire();
-            }
-            if (distance > d2)
-            {
-                es.EndPanicFire();
-            }
+            transform.position = Vector3.MoveTowards(transform.position, target.position, move_step);
             transform.forward = Vector3.RotateTowards(transform.forward, targetDir, rotate_step, 0.0f);
 
         }
@@ -57,6 +46,10 @@ public class Basic_enemy_AI : MonoBehaviour {
     }
     private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerController>().health -= 40;
+            health = 0;
+        }
     }
 }
