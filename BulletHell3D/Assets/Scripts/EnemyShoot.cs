@@ -118,7 +118,7 @@ public class EnemyShoot : MonoBehaviour
         }
     }
 
-    private void SetPattern(int index)
+    public void SetPattern(int index)
     {
         if(index < patterns.Length)
         {
