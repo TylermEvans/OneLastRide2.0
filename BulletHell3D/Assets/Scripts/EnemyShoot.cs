@@ -53,7 +53,7 @@ public class EnemyShoot : MonoBehaviour
     {
         tx = transform.position.x;
         ty = transform.position.y;
-        tz = transform.position.z + transform.forward.z;
+        tz = transform.position.z;
 
         weaponTimer -= Time.fixedDeltaTime;
         bulletTimer -= Time.fixedDeltaTime;
@@ -101,20 +101,20 @@ public class EnemyShoot : MonoBehaviour
     {
         if(numPathsIsEven)
         {
-            angleOffset = transform.rotation.z + ((numPaths / 2) - 0.5f) * pathAngleGap;
+            angleOffset = transform.rotation.y - ((numPaths / 2 - 0.5f) * pathAngleGap);
         }
         else
         {
-
+            angleOffset = transform.rotation.y - (numPaths - 1) / 2 * pathAngleGap;
         }
         for(int i = 0; i < numPaths; i++)
         {
-           float bx = Mathf.Cos(angleOffset + i * pathAngleGap)+transform.position.x;
-           float bz = Mathf.Sin(angleOffset + i * pathAngleGap)+transform.position.z;
-           Vector3 bpos = new Vector3(bx, ty, bz);
-           Vector3 bdir = (bpos - transform.position).normalized;
-           Instantiate(bullet, bpos, Quaternion.LookRotation(bdir));
-           bullet.mOwner = gameObject;
+            float bx = Mathf.Tan(angleOffset + i * pathAngleGap) + tx;
+            float bz = tz - 1;
+            Vector3 bpos = new Vector3(bx, ty, bz);
+            Vector3 look = (bpos - transform.position).normalized;
+            Instantiate(bullet, bpos, Quaternion.LookRotation(look));
+            bullet.mOwner = gameObject;
         }
     }
 
