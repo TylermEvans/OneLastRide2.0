@@ -14,9 +14,12 @@ public class Basic_enemy_AI : MonoBehaviour {
     private float move_step;
     private float rotate_step;
     private EnemyShoot es;
+
+    scoreCounter score;
     // Use this for initialization
     void Start () {
         target = GameObject.FindWithTag("Player").transform;
+        score = GameObject.Find("ScoreCounterObj").GetComponent<scoreCounter>();
         es = GetComponent<EnemyShoot>();
     }
 	
@@ -24,6 +27,8 @@ public class Basic_enemy_AI : MonoBehaviour {
 	void Update () {
         if (health <= 0)
         {
+            ///increment score here
+            score.add(10);
             Destroy(gameObject);
         }
         if (target)
