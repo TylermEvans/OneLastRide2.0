@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class scoreCounter : MonoBehaviour
 {
     public int mScoreCount = 0;
-    public Text myText;
+    public Text mText;
     scoreCounter score = GameObject.Find("ScoreCounterObj").GetComponent<scoreCounter>();
     // Use this for initialization
     void Start()
     {
-        myText.text = "new Stuff";
+
     }
     
     public void add(int num)
@@ -23,7 +23,7 @@ public class scoreCounter : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        myText.text = "update";
+        mText.text = "Score : " + mScoreCount.ToString();
         ///score.GetComponent<UnityEngine.UI.Text>().text = "Score : " + score.mScoreCount;
     }
 }
